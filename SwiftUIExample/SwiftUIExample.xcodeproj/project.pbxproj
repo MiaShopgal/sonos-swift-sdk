@@ -3,11 +3,10 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1A012EDB26FE77A200F20A12 /* SonosSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 1A012EDA26FE77A200F20A12 /* SonosSDK */; };
 		1A19C78D25E4BB6900C42AE4 /* HomeTheaterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A19C78C25E4BB6900C42AE4 /* HomeTheaterView.swift */; };
 		1A19C79125E4CDEE00C42AE4 /* PlayerSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A19C79025E4CDEE00C42AE4 /* PlayerSettingsView.swift */; };
 		1A756B4526FE83F100205061 /* SonosNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = 1A756B4426FE83F100205061 /* SonosNetworking */; };
@@ -30,6 +29,7 @@
 		1AC798CA25E5FAC8009BC56F /* AudioClipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC798C925E5FAC8009BC56F /* AudioClipView.swift */; };
 		1AF63243260B737F00138CC6 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF63242260B737F00138CC6 /* FavoritesView.swift */; };
 		1AFD43A126FC3C31001EA3E8 /* UIApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFD43A026FC3C31001EA3E8 /* UIApplication+Extensions.swift */; };
+		F8DFE1AF2B02096D004E2886 /* PlaybackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8DFE1AE2B02096D004E2886 /* PlaybackView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +54,8 @@
 		1AC798C925E5FAC8009BC56F /* AudioClipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioClipView.swift; sourceTree = "<group>"; };
 		1AF63242260B737F00138CC6 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 		1AFD43A026FC3C31001EA3E8 /* UIApplication+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extensions.swift"; sourceTree = "<group>"; };
+		F8DFE1AD2B016A8C004E2886 /* sonos-swift-sdk */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "sonos-swift-sdk"; path = ..; sourceTree = "<group>"; };
+		F8DFE1AE2B02096D004E2886 /* PlaybackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +64,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A756B4526FE83F100205061 /* SonosNetworking in Frameworks */,
-				1A012EDB26FE77A200F20A12 /* SonosSDK in Frameworks */,
 				1A9A4D1D25E36F7900DF3173 /* SonosSDK in Frameworks */,
 				1A9A4D1925E36F6300DF3173 /* SwiftUIRefresh in Frameworks */,
 				1A9977AE25F03BA30025D73E /* AlamofireImage in Frameworks */,
@@ -159,6 +160,7 @@
 				1A9A4D0625E36E9600DF3173 /* PlayerView.swift */,
 				1A19C79025E4CDEE00C42AE4 /* PlayerSettingsView.swift */,
 				1AB368B925FB1E5100B93681 /* GroupPlaybackStatusView.swift */,
+				F8DFE1AE2B02096D004E2886 /* PlaybackView.swift */,
 			);
 			path = Players;
 			sourceTree = "<group>";
@@ -175,6 +177,7 @@
 		1A9A4D1B25E36F7900DF3173 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F8DFE1AD2B016A8C004E2886 /* sonos-swift-sdk */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -224,7 +227,6 @@
 				1A9A4D1825E36F6300DF3173 /* SwiftUIRefresh */,
 				1A9A4D1C25E36F7900DF3173 /* SonosSDK */,
 				1A9977AD25F03BA30025D73E /* AlamofireImage */,
-				1A012EDA26FE77A200F20A12 /* SonosSDK */,
 				1A756B4426FE83F100205061 /* SonosNetworking */,
 			);
 			productName = SwiftUIExample;
@@ -257,7 +259,6 @@
 			packageReferences = (
 				1A9A4D1725E36F6300DF3173 /* XCRemoteSwiftPackageReference "SwiftUIRefresh" */,
 				1A9977AC25F03BA30025D73E /* XCRemoteSwiftPackageReference "AlamofireImage" */,
-				1A012ED926FE77A200F20A12 /* XCRemoteSwiftPackageReference "sonos-swift-sdk" */,
 				1A756B4326FE83F100205061 /* XCRemoteSwiftPackageReference "sonos-swift-networking" */,
 			);
 			productRefGroup = 1A9A4CF025E36DD500DF3173 /* Products */;
@@ -310,6 +311,7 @@
 				1A9A4D0D25E36E9600DF3173 /* PlayerVolumeView.swift in Sources */,
 				1A19C78D25E4BB6900C42AE4 /* HomeTheaterView.swift in Sources */,
 				1A8CE30725EF345900ED8015 /* LazyImage.swift in Sources */,
+				F8DFE1AF2B02096D004E2886 /* PlaybackView.swift in Sources */,
 				1A9A4D0E25E36E9600DF3173 /* PlayerView.swift in Sources */,
 				1AC798CA25E5FAC8009BC56F /* AudioClipView.swift in Sources */,
 				1AF63243260B737F00138CC6 /* FavoritesView.swift in Sources */,
@@ -517,14 +519,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		1A012ED926FE77A200F20A12 /* XCRemoteSwiftPackageReference "sonos-swift-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/JimmyJammed/sonos-swift-sdk.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
 		1A756B4326FE83F100205061 /* XCRemoteSwiftPackageReference "sonos-swift-networking" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/JimmyJammed/sonos-swift-networking.git";
@@ -552,11 +546,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		1A012EDA26FE77A200F20A12 /* SonosSDK */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1A012ED926FE77A200F20A12 /* XCRemoteSwiftPackageReference "sonos-swift-sdk" */;
-			productName = SonosSDK;
-		};
 		1A756B4426FE83F100205061 /* SonosNetworking */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 1A756B4326FE83F100205061 /* XCRemoteSwiftPackageReference "sonos-swift-networking" */;

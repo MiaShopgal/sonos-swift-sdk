@@ -38,4 +38,8 @@ public struct AuthenticationToken: Codable {
         self.scope = scope
         self.token_type = token_type
     }
+    
+    public func getAccessToken() -> String {
+        return self.access_token
+    }
 }

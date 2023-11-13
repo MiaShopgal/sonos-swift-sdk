@@ -24,5 +24,19 @@ struct GroupPlaybackService {
             failure(error)
         }.performRequest()
     }
+    
+    func setGroupPlaybackPlay(authenticationToken: AuthenticationToken, groupId: String, success: @escaping (Data) -> (), failure: @escaping (Error?) -> ()) {
+        
+        PlaybackPlayNetwork(accessToken: authenticationToken.access_token, groupId: groupId) { data in
+            guard let data = data else {
+                let error = NSError.errorWithMessage(message: "Could not create PlaybackStatus object.")
+                failure(error)
+                return
+            }
+            success(data)
+        } failure: { error in
+            failure(error)
+        }.performRequest()
+    }
 
 }

@@ -11,9 +11,9 @@ import Swinject
 
 struct SonosConfiguration {
 
-    static let keyName = "your-sonos-key-name"
-    static let key = "your-sonos-developer-key"
-    static let secret = "your-sonos-developer-secret"
+    static let keyName = "default"
+    static let key = "f79521cc-5f45-4da4-bf0d-82f2382fad71"
+    static let secret = "a624f024-2e8e-4db9-954f-515aad07771f"
     static let redirectURI = "sonos-swift-sdk://authorize"
     static let callbackURL = "your-webhook-api-url"
 

@@ -20,5 +20,16 @@ extension SonosManager {
             success(playbackStatus)
         }, failure: failure)
     }
-
+    
+    public func setGroupPlaybackPlay(groupId: String, success: @escaping (Data) -> Void, failure: @escaping (Error?) -> Void) {
+        guard let authenticationToken = authenticationToken else {
+            let error = NSError.errorWithMessage(message: "Could not load authentication token.")
+            failure(error)
+            return
+        }
+        
+        groupPlaybackService.setGroupPlaybackPlay(authenticationToken: authenticationToken, groupId: groupId, success: { data in
+            success(data)
+        }, failure: failure)
+    }
 }
