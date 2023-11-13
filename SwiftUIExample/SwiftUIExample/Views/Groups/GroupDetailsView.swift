@@ -46,7 +46,7 @@ struct GroupDetailsView: View {
                                     .animation(.spring(), value: 2)
                             }
                             NavigationLink(
-                                destination: PlayerView(player: player)) {
+                                destination: PlayerView(groupId: group.id, player: player)) {
                                 Text(player.name)
                             }
                             .disabled(editMode == .active)
@@ -71,7 +71,7 @@ struct GroupDetailsView: View {
                                     .animation(.spring(), value: 2)
                             }
                             NavigationLink(
-                                destination: PlayerView(player: player)) {
+                                destination: PlayerView(groupId: group.id, player: player)) {
                                 Text(player.name)
                             }
                             .disabled(editMode == .active)

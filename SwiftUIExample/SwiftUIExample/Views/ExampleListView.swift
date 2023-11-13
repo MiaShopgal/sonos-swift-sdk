@@ -69,6 +69,8 @@ struct ExampleListView: View {
             isLoading.toggle()
             sonosManager.authenticate { _ in
                 isLoading.toggle()
+                print(sonosManager.authorizationUrl)
+                print(sonosManager.cachedToken?.getAccessToken())
             } failure: { _ in
                 isLoading.toggle()
             }

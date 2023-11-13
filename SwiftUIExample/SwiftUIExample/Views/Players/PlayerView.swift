@@ -10,9 +10,10 @@ import SonosSDK
 import SwiftUIRefresh
 
 struct PlayerView: View {
+    var groupId: String
     var player: Player
     var sonosManager: SonosManager = ConfigurationProvider.shared.resolve(SonosManager.self)
-
+    
     @State var isLoading = false
     @State var isRefreshing = false
 
@@ -21,6 +22,10 @@ struct PlayerView: View {
 
     var body: some View {
         List {
+            NavigationLink(
+                destination: PlaybackView(groupId: groupId, player: player)) {
+                Text("playback: \(groupId)")
+            }
             NavigationLink(
                 destination: AudioClipView(player: player)) {
                 Text("audioClip")
