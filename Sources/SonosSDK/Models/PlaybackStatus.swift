@@ -68,6 +68,7 @@ public struct PlaybackActions {
     public var canResume: Bool
     public var canSeek: Bool
     public var canShuffle: Bool
+    public var canSkip: Bool
     public var canSkipBack: Bool
     public var canSkipToItem: Bool
     public var limitedSkips: Bool
@@ -89,6 +90,7 @@ public struct PlaybackActions {
         self.canResume = json["canResume"].boolValue
         self.canSeek = json["canSeek"].boolValue
         self.canShuffle = json["canShuffle"].boolValue
+        self.canSkip = json["canSkip"].boolValue
         self.canSkipBack = json["canSkipBack"].boolValue
         self.canSkipToItem = json["canSkipToItem"].boolValue
         self.limitedSkips = json["limitedSkips"].boolValue
