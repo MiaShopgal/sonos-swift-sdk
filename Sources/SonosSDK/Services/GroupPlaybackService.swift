@@ -15,7 +15,7 @@ struct GroupPlaybackService {
         PlaybackGetStatusNetwork(accessToken: authenticationToken.access_token, groupId: groupId) { data in
             guard let data = data,
                   let playbackStatus = PlaybackStatus(data) else {
-                let error = NSError.errorWithMessage(message: "Could not create PlaybackStatus object.")
+                let error = NSError.errorWithMessage(message: "Could not create PlaybackGetStatusNetwork object.")
                 failure(error)
                 return
             }
@@ -29,7 +29,7 @@ struct GroupPlaybackService {
         
         PlaybackPlayNetwork(accessToken: authenticationToken.access_token, groupId: groupId) { data in
             guard let data = data else {
-                let error = NSError.errorWithMessage(message: "Could not create PlaybackStatus object.")
+                let error = NSError.errorWithMessage(message: "Could not create PlaybackPlayNetwork object.")
                 failure(error)
                 return
             }
@@ -43,7 +43,7 @@ struct GroupPlaybackService {
         
         PlaybackPauseNetwork(accessToken: authenticationToken.access_token, groupId: groupId) { data in
             guard let data = data else {
-                let error = NSError.errorWithMessage(message: "Could not create PlaybackStatus object.")
+                let error = NSError.errorWithMessage(message: "Could not create PlaybackPauseNetwork object.")
                 failure(error)
                 return
             }
@@ -53,4 +53,45 @@ struct GroupPlaybackService {
         }.performRequest()
     }
 
+    func setGroupPlaybackModes(authenticationToken: AuthenticationToken, groupId: String, playModes: [String], success: @escaping (Data) -> (), failure: @escaping (Error?) -> ()) {
+        
+        PlaybackSetPlayModesNetwork(accessToken: authenticationToken.access_token, groupId: groupId, playModes: playModes) { data in
+            guard let data = data else {
+                let error = NSError.errorWithMessage(message: "Could not create PlaybackSetPlayModesNetwork object.")
+                failure(error)
+                return
+            }
+            success(data)
+        } failure: { error in
+            failure(error)
+        }.performRequest()
+    }
+    
+    func setGroupSkipToNext(authenticationToken: AuthenticationToken, groupId: String, success: @escaping (Data) -> (), failure: @escaping (Error?) -> ()) {
+        
+        PlaybackSkipToNextTrackNetwork(accessToken: authenticationToken.access_token, groupId: groupId) { data in
+            guard let data = data else {
+                let error = NSError.errorWithMessage(message: "Could not create PlaybackSkipToNextTrackNetwork object.")
+                failure(error)
+                return
+            }
+            success(data)
+        } failure: { error in
+            failure(error)
+        }.performRequest()
+    }
+    
+    func setGroupSkipToPrevious(authenticationToken: AuthenticationToken, groupId: String, success: @escaping (Data) -> (), failure: @escaping (Error?) -> ()) {
+        
+        PlaybackSkipToPreviousTrackNetwork(accessToken: authenticationToken.access_token, groupId: groupId) { data in
+            guard let data = data else {
+                let error = NSError.errorWithMessage(message: "Could not create PlaybackSkipToPreviousTrackNetwork object.")
+                failure(error)
+                return
+            }
+            success(data)
+        } failure: { error in
+            failure(error)
+        }.performRequest()
+    }
 }

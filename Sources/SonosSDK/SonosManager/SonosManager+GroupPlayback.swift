@@ -44,4 +44,40 @@ extension SonosManager {
             success(data)
         }, failure: failure)
     }
+    
+    public func setGroupSkipToNext(groupId: String, success: @escaping (Data) -> Void, failure: @escaping (Error?) -> Void) {
+        guard let authenticationToken = authenticationToken else {
+            let error = NSError.errorWithMessage(message: "Could not load authentication token.")
+            failure(error)
+            return
+        }
+        
+        groupPlaybackService.setGroupSkipToNext(authenticationToken: authenticationToken, groupId: groupId, success: { data in
+            success(data)
+        }, failure: failure)
+    }
+    
+    public func setGroupSkipToPrevious(groupId: String, success: @escaping (Data) -> Void, failure: @escaping (Error?) -> Void) {
+        guard let authenticationToken = authenticationToken else {
+            let error = NSError.errorWithMessage(message: "Could not load authentication token.")
+            failure(error)
+            return
+        }
+        
+        groupPlaybackService.setGroupSkipToPrevious(authenticationToken: authenticationToken, groupId: groupId, success: { data in
+            success(data)
+        }, failure: failure)
+    }
+    
+    public func setGroupPlaybackModes(groupId: String, playModes: [String], success: @escaping (Data) -> Void, failure: @escaping (Error?) -> Void) {
+        guard let authenticationToken = authenticationToken else {
+            let error = NSError.errorWithMessage(message: "Could not load authentication token.")
+            failure(error)
+            return
+        }
+        
+        groupPlaybackService.setGroupPlaybackModes(authenticationToken: authenticationToken, groupId: groupId, playModes: playModes, success: { data in
+            success(data)
+        }, failure: failure)
+    }
 }
