@@ -40,18 +40,18 @@ public struct ContainerMetadata {
     public var service: ServiceMetadata?
     public var imageUrl: String?
     public var images: Images?
+    let jsonObject: [String: Any] = [
+        "_objectType": "none"
+    ]
+    
     init(_ data: [String: Any]) {
         let json = JSON(data)
+        
         self._objectType = json["_objectType"].string ?? ""
         self.name = json["name"].string ?? ""
         self.type = json["type"].string ?? ""
-        guard let idMetadata = json["id"].dictionary else {
-            return
-        }
-        self.id = IdMetadata(idMetadata)
-        if let serviceMetadata = json["service"].dictionary {
-            self.service = ServiceMetadata(serviceMetadata)
-        }
+        self.id = IdMetadata(json["id"].dictionary ?? jsonObject)
+        self.service = ServiceMetadata(json["service"].dictionary ?? jsonObject)
         self.imageUrl = json["imageUrl"].string ?? ""
         self.images = Images(json["images"].arrayValue)
     }
