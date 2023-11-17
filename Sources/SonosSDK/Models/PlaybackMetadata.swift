@@ -45,7 +45,9 @@ public struct ContainerMetadata {
         self._objectType = json["_objectType"].string ?? ""
         self.name = json["name"].string ?? ""
         self.type = json["type"].string ?? ""
-        self.id = IdMetadata(json["id"].dictionary!)
+        if let idMetadata = json["id"].dictionary {
+            self.id = IdMetadata(idMetadata)
+        }
         if let serviceMetadata = json["service"].dictionary {
             self.service = ServiceMetadata(serviceMetadata)
         }
