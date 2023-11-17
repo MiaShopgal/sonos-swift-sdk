@@ -14,6 +14,9 @@ public struct PlaybackMetadata {
     public var container: ContainerMetadata
     public var currentItem: Item
     public var nextItem: Item
+    let jsonObject: [String: Any] = [
+        "_objectType": "none"
+    ]
     
     init?(_ data: Any) {
         let json = JSON(data)
@@ -33,9 +36,9 @@ public struct PlaybackMetadata {
 }
 
 public struct ContainerMetadata {
-    public var _objectType: String
-    public var name: String
-    public var type: String
+    public var _objectType: String?
+    public var name: String?
+    public var type: String?
     public var id: IdMetadata?
     public var service: ServiceMetadata?
     public var imageUrl: String?
