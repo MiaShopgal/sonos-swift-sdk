@@ -36,6 +36,7 @@ public struct Container {
     public var type: String?
     public var id: UniversalMusicObjectId?
     public var images: [Any]
+    public var service: Service?
 
     init(_ data: [String: Any]) {
         let json = JSON(data)
@@ -46,6 +47,7 @@ public struct Container {
             id = UniversalMusicObjectId(idData)
         }
         images = json["images"].arrayObject ?? []
+        service = Service(json["service"].dictionary)
     }
 }
 
