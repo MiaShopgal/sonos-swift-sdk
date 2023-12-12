@@ -9,7 +9,7 @@ import Foundation
 
 extension SonosManager {
 
-    func getGroupPlaybackMetadataService(groupId: String,
+    public func getGroupPlaybackMetadataService(groupId: String,
                                          success: @escaping (MetadataStatus) -> Void,
                                          failure: @escaping (Error?) -> Void) {
 
