@@ -12,22 +12,37 @@ public struct MetadataStatus {
     public var container: Container
     public var currentItem: QueueItem?
     public var nextItem: QueueItem?
-    public var playbackSession: PlaybackSession
+    public var playbackSession: PlaybackSession?
 
     init?(_ data: Any) {
+        
         let json = JSON(data)
 
-        guard let containerData = json["container"].dictionary,
-              let currentItemData = json["currentItem"].dictionary,
-              let nextItemData = json["nextItem"].dictionary,
-              let playbackSessionData = json["playbackSession"].dictionary else {
+        guard let containerData = json["container"].dictionary else {
+            
             return nil
+            
         }
 
         container = Container(containerData)
-        currentItem = QueueItem(currentItemData)
-        nextItem = QueueItem(nextItemData)
-        playbackSession = PlaybackSession(playbackSessionData)
+        
+        if let nextItemData = json["nextItem"].dictionary {
+            
+            nextItem = QueueItem(nextItemData)
+            
+        }
+        
+        if let currentItemData = json["currentItem"].dictionary {
+            
+            currentItem = QueueItem(currentItemData)
+            
+        }
+        
+        if let playbackSessionData = json["playbackSession"].dictionary {
+            
+            playbackSession = PlaybackSession(playbackSessionData)
+            
+        }
     }
 }
 
@@ -47,7 +62,12 @@ public struct Container {
             id = UniversalMusicObjectId(idData)
         }
         images = json["images"].arrayObject ?? []
-        service = Service(json["service"].dictionary)
+        
+        if let service = json["service"].dictionary{
+            
+            self.service = Service(service)
+        }
+        
     }
 }
 
