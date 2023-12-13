@@ -27,7 +27,7 @@ extension SonosManager {
                                                     }, failure: failure)
     }
 
-    public func setGroupPlay(orGroup group: Group,
+    public func setGroupPlay(forGroup group: Group,
                              success: @escaping () -> Void,
                              failure: @escaping (Error?) -> Void) {
 
@@ -48,7 +48,7 @@ extension SonosManager {
         }
     }
 
-    public func setGroupSkipToNext(orGroup group: Group,
+    public func setGroupSkipToNext(forGroup group: Group,
                                    success: @escaping () -> Void,
                                    failure: @escaping (Error?) -> Void) {
 
@@ -69,7 +69,7 @@ extension SonosManager {
         }
     }
 
-    public func setGroupSkipToPrevious(orGroup group: Group,
+    public func setGroupSkipToPrevious(forGroup group: Group,
                                        success: @escaping () -> Void,
                                        failure: @escaping (Error?) -> Void) {
 
@@ -90,7 +90,7 @@ extension SonosManager {
         }
     }
 
-    public func setGroupPause(orGroup group: Group,
+    public func setGroupPause(forGroup group: Group,
                               success: @escaping () -> Void,
                               failure: @escaping (Error?) -> Void) {
 
