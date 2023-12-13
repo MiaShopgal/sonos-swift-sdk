@@ -23,7 +23,7 @@ extension SonosManager {
 
         }
 
-        groupPlaybackMetadataService.getGroupPlaybackMetadata(token: authenticationToken.access_token,
+        groupPlaybackMetadataService.getGroupPlaybackMetadata(authenticationToken: authenticationToken,
                                                               groupId: groupId) { metadataStatus in
 
             success(metadataStatus)
