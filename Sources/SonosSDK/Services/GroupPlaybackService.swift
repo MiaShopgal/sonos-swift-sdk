@@ -25,6 +25,40 @@ struct GroupPlaybackService {
         }.performRequest()
     }
 
+    func setPlay(authenticationToken: AuthenticationToken,
+                 groupId: String,
+                 success: @escaping () -> (),
+                 failure: @escaping (Error?) -> ()) {
+
+        PlaybackPlayNetwork(accessToken: authenticationToken.access_token,
+                            groupId: groupId) { data in
+
+            success()
+
+        } failure: { error in
+
+            failure(error)
+
+        }.performRequest()
+    }
+
+    func setPause(authenticationToken: AuthenticationToken,
+                  groupId: String,
+                  success: @escaping () -> (),
+                  failure: @escaping (Error?) -> ()) {
+
+        PlaybackPauseNetwork(accessToken: authenticationToken.access_token,
+                             groupId: groupId) { data in
+
+            success()
+
+        } failure: { error in
+
+            failure(error)
+
+        }.performRequest()
+    }
+
     func subscribe(authenticationToken: AuthenticationToken,
                    groupId: String,
                    success: @escaping () -> (),

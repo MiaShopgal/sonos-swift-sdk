@@ -9,16 +9,64 @@ import Foundation
 
 extension SonosManager {
 
-    public func getGroupPlaybackStatus(groupId: String, success: @escaping (PlaybackStatus) -> Void, failure: @escaping (Error?) -> Void) {
+    public func getGroupPlaybackStatus(forGroup group: Group,
+                                       success: @escaping (PlaybackStatus) -> Void,
+                                       failure: @escaping (Error?) -> Void) {
         guard let authenticationToken = authenticationToken else {
             let error = NSError.errorWithMessage(message: "Could not load authentication token.")
             failure(error)
             return
         }
 
-        groupPlaybackService.getGroupPlaybackStatus(authenticationToken: authenticationToken, groupId: groupId, success: { playbackStatus in
-            success(playbackStatus)
-        }, failure: failure)
+        groupPlaybackService.getGroupPlaybackStatus(authenticationToken: authenticationToken,
+                                                    groupId: group.id,
+                                                    success: { playbackStatus in
+
+                                                        success(playbackStatus)
+
+                                                    }, failure: failure)
+    }
+
+    public func setGroupPlay(orGroup group: Group,
+                             success: @escaping () -> Void,
+                             failure: @escaping (Error?) -> Void) {
+
+        guard let authenticationToken = authenticationToken else {
+            let error = NSError.errorWithMessage(message: "Could not load authentication token.")
+            failure(error)
+            return
+        }
+
+        groupPlaybackService.setPlay(authenticationToken: authenticationToken,
+                                     groupId: group.id) {
+            success()
+
+        } failure: { error in
+
+            failure(error)
+
+        }
+    }
+
+    public func setGroupPause(orGroup group: Group,
+                              success: @escaping () -> Void,
+                              failure: @escaping (Error?) -> Void) {
+
+        guard let authenticationToken = authenticationToken else {
+            let error = NSError.errorWithMessage(message: "Could not load authentication token.")
+            failure(error)
+            return
+        }
+
+        groupPlaybackService.setPause(authenticationToken: authenticationToken,
+                                      groupId: group.id) {
+            success()
+
+        } failure: { error in
+
+            failure(error)
+
+        }
     }
 
     public func subscribeToGroupPlaybackStatus(forGroup group: Group,
