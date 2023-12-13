@@ -48,6 +48,48 @@ extension SonosManager {
         }
     }
 
+    public func setGroupSkipToNext(orGroup group: Group,
+                                   success: @escaping () -> Void,
+                                   failure: @escaping (Error?) -> Void) {
+
+        guard let authenticationToken = authenticationToken else {
+            let error = NSError.errorWithMessage(message: "Could not load authentication token.")
+            failure(error)
+            return
+        }
+
+        groupPlaybackService.setSkipToNext(authenticationToken: authenticationToken,
+                                           groupId: group.id) {
+            success()
+
+        } failure: { error in
+
+            failure(error)
+
+        }
+    }
+
+    public func setGroupSkipToPrevious(orGroup group: Group,
+                                       success: @escaping () -> Void,
+                                       failure: @escaping (Error?) -> Void) {
+
+        guard let authenticationToken = authenticationToken else {
+            let error = NSError.errorWithMessage(message: "Could not load authentication token.")
+            failure(error)
+            return
+        }
+
+        groupPlaybackService.setSkipToPrevious(authenticationToken: authenticationToken,
+                                               groupId: group.id) {
+            success()
+
+        } failure: { error in
+
+            failure(error)
+
+        }
+    }
+
     public func setGroupPause(orGroup group: Group,
                               success: @escaping () -> Void,
                               failure: @escaping (Error?) -> Void) {

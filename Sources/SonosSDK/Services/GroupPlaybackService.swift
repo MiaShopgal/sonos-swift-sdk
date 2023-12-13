@@ -59,6 +59,40 @@ struct GroupPlaybackService {
         }.performRequest()
     }
 
+    func setSkipToNext(authenticationToken: AuthenticationToken,
+                       groupId: String,
+                       success: @escaping () -> (),
+                       failure: @escaping (Error?) -> ()) {
+
+        PlaybackSkipToNextTrackNetwork(accessToken: authenticationToken.access_token,
+                                       groupId: groupId) { data in
+
+            success()
+
+        } failure: { error in
+
+            failure(error)
+
+        }.performRequest()
+    }
+
+    func setSkipToPrevious(authenticationToken: AuthenticationToken,
+                           groupId: String,
+                           success: @escaping () -> (),
+                           failure: @escaping (Error?) -> ()) {
+
+        PlaybackSkipToPreviousTrackNetwork(accessToken: authenticationToken.access_token,
+                                           groupId: groupId) { data in
+
+            success()
+
+        } failure: { error in
+
+            failure(error)
+
+        }.performRequest()
+    }
+
     func subscribe(authenticationToken: AuthenticationToken,
                    groupId: String,
                    success: @escaping () -> (),
