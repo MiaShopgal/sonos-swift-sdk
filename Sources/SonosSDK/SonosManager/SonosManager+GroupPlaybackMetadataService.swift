@@ -10,8 +10,8 @@ import Foundation
 extension SonosManager {
 
     public func getGroupPlaybackMetadataService(groupId: String,
-                                         success: @escaping (MetadataStatus) -> Void,
-                                         failure: @escaping (Error?) -> Void) {
+                                                success: @escaping (MetadataStatus) -> Void,
+                                                failure: @escaping (Error?) -> Void) {
 
         guard let authenticationToken = authenticationToken else {
 
@@ -29,6 +29,51 @@ extension SonosManager {
             success(metadataStatus)
 
         } failure: { error in
+
+            failure(error)
+
+        }
+    }
+
+    public func subscribeToGroupPlaybackMetadataService(forGroup group: Group,
+                                                        success: @escaping () -> Void,
+                                                        failure: @escaping (Error?) -> Void) {
+
+        guard let authenticationToken = authenticationToken else {
+
+            let error = NSError.errorWithMessage(message: "Could not load authentication token.")
+
+            failure(error)
+
+            return
+
+        }
+
+        groupPlaybackMetadataService.subscribe(authenticationToken: authenticationToken,
+                                               groupId: group.id,
+                                               success: success) { error in
+            failure(error)
+            
+        }
+    }
+
+    public func unsubscribeToGroupPlaybackMetadataService(forGroup group: Group,
+                                                          success: @escaping () -> Void,
+                                                          failure: @escaping (Error?) -> Void) {
+
+        guard let authenticationToken = authenticationToken else {
+
+            let error = NSError.errorWithMessage(message: "Could not load authentication token.")
+
+            failure(error)
+
+            return
+
+        }
+
+        groupPlaybackMetadataService.unsubscribe(authenticationToken: authenticationToken,
+                                                 groupId: group.id, 
+                                                 success: success) { error in
 
             failure(error)
 
