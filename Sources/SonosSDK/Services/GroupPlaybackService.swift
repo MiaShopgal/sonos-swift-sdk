@@ -6,11 +6,11 @@
 //
 
 import Foundation
-import SwiftyJSON
 import SonosNetworking
+import SwiftyJSON
 
 struct GroupPlaybackService {
-            
+
     func getGroupPlaybackStatus(authenticationToken: AuthenticationToken, groupId: String, success: @escaping (PlaybackStatus) -> (), failure: @escaping (Error?) -> ()) {
         PlaybackGetStatusNetwork(accessToken: authenticationToken.access_token, groupId: groupId) { data in
             guard let data = data,
@@ -25,4 +25,35 @@ struct GroupPlaybackService {
         }.performRequest()
     }
 
+    func subscribe(authenticationToken: AuthenticationToken,
+                   groupId: String,
+                   success: @escaping () -> (),
+                   failure: @escaping (Error?) -> ()) {
+
+        PlaybackSubscribeNetwork(accessToken: authenticationToken.access_token,
+                                 groupId: groupId) { data in
+            success()
+
+        } failure: { error in
+
+            failure(error)
+
+        }.performRequest()
+    }
+
+    func unsubscribe(authenticationToken: AuthenticationToken,
+                     groupId: String,
+                     success: @escaping () -> (),
+                     failure: @escaping (Error?) -> ()) {
+
+        PlaybackUnsubscribeNetwork(accessToken: authenticationToken.access_token,
+                                   groupId: groupId) { data in
+            success()
+
+        } failure: { error in
+
+            failure(error)
+
+        }.performRequest()
+    }
 }
