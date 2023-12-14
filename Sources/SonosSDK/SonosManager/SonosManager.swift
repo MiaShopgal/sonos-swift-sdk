@@ -60,6 +60,10 @@ public class SonosManager: ObservableObject {
         return HouseholdService()
     }()
 
+    lazy var groupPlaylistService: GroupPlaylistService = {
+        return GroupPlaylistService()
+    }()
+    
     lazy var groupService: GroupService = {
         return GroupService()
     }()
