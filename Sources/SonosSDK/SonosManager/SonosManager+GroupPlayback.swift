@@ -48,6 +48,29 @@ extension SonosManager {
         }
     }
 
+    public func setGroupSeekTo(position: UInt,
+                               forGroup group: Group,
+                               success: @escaping () -> Void,
+                               failure: @escaping (Error?) -> Void) {
+
+        guard let authenticationToken = authenticationToken else {
+            let error = NSError.errorWithMessage(message: "Could not load authentication token.")
+            failure(error)
+            return
+        }
+
+        groupPlaybackService.setSeek(authenticationToken: authenticationToken,
+                                     groupId: group.id,
+                                     position: position) {
+            success()
+
+        } failure: { error in
+
+            failure(error)
+
+        }
+    }
+
     public func setGroupSkipToNext(forGroup group: Group,
                                    success: @escaping () -> Void,
                                    failure: @escaping (Error?) -> Void) {
