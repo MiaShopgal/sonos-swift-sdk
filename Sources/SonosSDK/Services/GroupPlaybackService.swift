@@ -42,6 +42,25 @@ struct GroupPlaybackService {
         }.performRequest()
     }
 
+    func setSeek(authenticationToken: AuthenticationToken,
+                 groupId: String,
+                 position: UInt,
+                 success: @escaping () -> (),
+                 failure: @escaping (Error?) -> ()) {
+
+        PlaybackSeekNetwork(accessToken: authenticationToken.access_token,
+                            groupId: groupId,
+                            positionMillis: position) { data in
+
+            success()
+
+        } failure: { error in
+
+            failure(error)
+
+        }.performRequest()
+    }
+
     func setPause(authenticationToken: AuthenticationToken,
                   groupId: String,
                   success: @escaping () -> (),
