@@ -41,7 +41,7 @@ struct GroupPlaybackMetadataService {
                    success: @escaping () -> Void,
                    failure: @escaping (Error?) -> Void) {
 
-        PlaybackSubscribeNetwork(accessToken: authenticationToken.access_token,
+        PlaybackMetadataSubscribeNetwork(accessToken: authenticationToken.access_token,
                                  groupId: groupId) { data in
             success()
 
